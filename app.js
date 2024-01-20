@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 var LoginRouter = require('./routes/Login/login');
 var getProfileRouter = require('./routes/Login/getProfile');
 var uploadfotoRouter = require('./routes/Profile/profile');
+var updateProfileRouter = require('./routes/Profile/updateProfile');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/users', usersRouter);
 app.use('/api/v1/login', LoginRouter);
 app.use('/api/v1/getprofile', getProfileRouter);
 app.use('/api/v1/uploadfoto', uploadfotoRouter);
+app.use('/api/v1/updateProfile', updateProfileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
