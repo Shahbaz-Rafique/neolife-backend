@@ -15,6 +15,11 @@ var LoginRouter = require('./routes/Login/login');
 var getProfileRouter = require('./routes/Login/getProfile');
 var uploadfotoRouter = require('./routes/Profile/profile');
 var updateProfileRouter = require('./routes/Profile/updateProfile');
+var addConsultantsRouter = require('./routes/Backend/register');
+var addpolicy1Router = require('./routes/Backend/policy1');
+var getPoliciesRouter = require('./routes/Backend/getPolicy');
+var uploadPDFRouter = require('./routes/Backend/uploadPdf');
+var getClientsRouter = require('./routes/Backend/getClients');
 
 var app = express();
 
@@ -42,6 +47,11 @@ app.use('/api/v1/login', LoginRouter);
 app.use('/api/v1/getprofile', getProfileRouter);
 app.use('/api/v1/uploadfoto', uploadfotoRouter);
 app.use('/api/v1/updateProfile', updateProfileRouter);
+app.use('/api/v1/addConsultants', addConsultantsRouter);
+app.use('/api/v1/addpolicy1', addpolicy1Router);
+app.use('/api/v1/getPolicies', getPoliciesRouter);
+app.use('/api/v1/uploadPDF', uploadPDFRouter);
+app.use('/api/v1/getClients', getClientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

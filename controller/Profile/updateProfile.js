@@ -8,9 +8,6 @@ async function UpdateProfile(req,response){
     const address=req.body.address;
     const telephone=req.body.telephone;
     const id=req.body.id;
-
-    console.log(id);
-    console.log(name);
     
     connection.query(`UPDATE consultants SET name='${name}',email='${email}',position='${position}',abschluss='${abschluss}',address='${address}',telefon='${telephone}' WHERE Id='${id}'`,(err,res)=>{
         if(err) {
