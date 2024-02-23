@@ -23,12 +23,10 @@ async function Login(req,response){
                 return response.status(200).json({ message: "invalid" });
             }
             else{
-                var token = GenerateToken(res);
                 return response.status(200).json({
                     message: 'success',
                     email: email,
                     id:res[0].Id,
-                    token: token,
                 });
             }
         }
