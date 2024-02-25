@@ -5,14 +5,17 @@ async function AddPolicy(req,response){
     const file=req.file.filename;
     const id=req.body.id;
     const email=req.body.email;
+    const count=parseInt(req.body.count);
+    console.log(count);
 
-    connection.query(`SELECT * FROM policies WHERE consultantId='${id}'`,(err,res)=>{
+    connection.query(`SELECT * FROM policies WHERE consultantId='${id}' and documentno=${count}`,(err,res)=>{
         if(err) throw err;
         else{
             if(res.length==0){
                 const data={
                     consultantId:id,
                     email:email,
+                    documentno:count,
                     [policy]:file
                 }
                 connection.query('INSERT INTO policies SET ?',data,(err,resl)=>{
@@ -23,7 +26,7 @@ async function AddPolicy(req,response){
                 })
             }
             else{
-                connection.query(`UPDATE policies SET ${policy}='${file}' WHERE consultantId='${id}'`,(err,res)=>{
+                connection.query(`UPDATE policies SET ${policy}='${file}' WHERE consultantId='${id}' and documentno=${count}`,(err,res)=>{
                     if(err) {
                         console.log(err);
                     }
