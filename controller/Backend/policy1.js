@@ -6,7 +6,6 @@ async function AddPolicy(req,response){
     const id=req.body.id;
     const email=req.body.email;
     const count=parseInt(req.body.count);
-    console.log(count);
 
     connection.query(`SELECT * FROM policies WHERE consultantId='${id}' and documentno=${count}`,(err,res)=>{
         if(err) throw err;

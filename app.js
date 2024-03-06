@@ -20,6 +20,8 @@ var addpolicy1Router = require('./routes/Backend/policy1');
 var getPoliciesRouter = require('./routes/Backend/getPolicy');
 var uploadPDFRouter = require('./routes/Backend/uploadPdf');
 var getClientsRouter = require('./routes/Backend/getClients');
+var addPage = require('./routes/Backend/page1');
+var getDataPage = require('./routes/Backend/getData');
 
 var app = express();
 
@@ -52,6 +54,8 @@ app.use('/api/v1/addpolicy1', addpolicy1Router);
 app.use('/api/v1/getPolicies', getPoliciesRouter);
 app.use('/api/v1/uploadPDF', uploadPDFRouter);
 app.use('/api/v1/getClients', getClientsRouter);
+app.use('/api/v1/pages', addPage);
+app.use('/api/v1/getDataPage', getDataPage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

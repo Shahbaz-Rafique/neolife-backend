@@ -5,16 +5,31 @@ async function UploadPDF(req,response){
     const id=req.query.Id;
     const email=req.query.email;
 
-    const data={
-        file:file,
-        consultantId:id,
-        email:email
-    }
-
-    connection.query('INSERT INTO PDF SET ?',data,(err,res)=>{
+    connection.query(`SELECT * FROM PDF WHERE email='${email}' and consultantid='${id}'`,(err,res)=>{
         if(err) throw err;
         else{
-            return response.status(200).json({message:"added"});
+            if(res.length==0){
+                const data={
+                    file:file,
+                    consultantId:id,
+                    email:email
+                }
+
+                connection.query('INSERT INTO PDF SET ?',data,(err,res)=>{
+                    if(err) throw err;
+                    else{
+                        return response.status(200).json({message:"added"});
+                    }
+                })
+            }
+            else{
+                connection.query(`UPDATE PDF SET file='${file}' where email='${email}' and consultantid='${id}'`,(err,res)=>{
+                    if(err) throw err;
+                    else{
+                        return response.status(200).json({message:"added"});
+                    }
+                })
+            }
         }
     })
 }
